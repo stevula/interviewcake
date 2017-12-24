@@ -16,8 +16,8 @@ exports.BinaryTreeNode = class BinaryTreeNode {
   }
 }
 
-exports.isSuperBalanced = function isSuperBalanced(treeRoot) {
-  const leafLevels = getLeafLevels(treeRoot);
+exports.isSuperBalanced = function isSuperBalanced(node) {
+  const leafLevels = getLeafLevels(node);
 
   if (leafLevels.length === 1) {
     return true;

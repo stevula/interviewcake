@@ -16,15 +16,15 @@ exports.BinaryTreeNode = class BinaryTreeNode {
   }
 }
 
-exports.isValidBST = function isValidBST(root) {
+exports.isValidBST = function isValidBST(node) {
   let isLeftValid = true;
   let isRightValid = true;
 
-  if (root.left) {
-    isLeftValid = (root.value > root.left.value) && isValidBST(root.left);
+  if (node.left) {
+    isLeftValid = (node.value > node.left.value) && isValidBST(node.left);
   }
-  if (root.right) {
-    isRightValid = (root.value < root.right.value) && isValidBST(root.right);
+  if (node.right) {
+    isRightValid = (node.value < node.right.value) && isValidBST(node.right);
   }
 
   return isLeftValid && isRightValid;

@@ -16,16 +16,33 @@ exports.BinaryTreeNode = class BinaryTreeNode {
   }
 }
 
-exports.isSuperBalanced = function isSuperBalanced(root, level = 1) {
-  if (!root.left && !root.right) return level;
+exports.isSuperBalanced = function isSuperBalanced(treeRoot) {
+  const leafLevels = getLeafLevels(treeRoot);
 
-  let left, right;
+  if (leafLevels.length === 1) {
+    return true;
+  } else if (leafLevels.length === 2) {
+  }
+  else if (leafLevels.length > 2) {
+    return false;
+  }
 
+  const levelDifference = Math.abs(leafLevels[1] - leafLevels[0]);
+  return levelDifference === 1;
+}
+
+function getLeafLevels(root, level = 0) {
+  let leafLevels = [];
+
+  if (!root.left && !root.right) {
+    leafLevels.push(level);
+  };
   if (root.left) {
-    left = isSuperBalanced(root.left, level + 1);
+    leafLevels = [...leafLevels, ...getLeafLevels(root.left, level + 1)];
   }
   if (root.right) {
-    right = isSuperBalanced(root.right, level + 1);
+    leafLevels = [...leafLevels, ...getLeafLevels(root.right, level + 1)];
   }
 
+  return Array.from(new Set(leafLevels));
 }

@@ -17,15 +17,4 @@ exports.BinaryTreeNode = class BinaryTreeNode {
 }
 
 exports.isBinarySearchTree = function isBinarySearchTree(root, level = 1) {
-  if (!root.left && !root.right) return level;
-
-  let left, right;
-
-  if (root.left) {
-    left = isBinarySearchTree(root.left, level + 1);
-  }
-  if (root.right) {
-    right = isBinarySearchTree(root.right, level + 1);
-  }
-
 }

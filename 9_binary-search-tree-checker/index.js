@@ -16,5 +16,16 @@ exports.BinaryTreeNode = class BinaryTreeNode {
   }
 }
 
-exports.isBinarySearchTree = function isBinarySearchTree(root, level = 1) {
+exports.isValidBST = function isValidBST(root) {
+  let isLeftValid = true;
+  let isRightValid = true;
+
+  if (root.left) {
+    isLeftValid = (root.value > root.left.value) && isValidBST(root.left);
+  }
+  if (root.right) {
+    isRightValid = (root.value < root.right.value) && isValidBST(root.right);
+  }
+
+  return isLeftValid && isRightValid;
 }

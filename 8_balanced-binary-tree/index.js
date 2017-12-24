@@ -32,6 +32,7 @@ exports.isSuperBalanced = function isSuperBalanced(treeRoot) {
 }
 
 function getLeafLevels(root, level = 0) {
+  // this could take up a lot of space
   let leafLevels = [];
 
   if (!root.left && !root.right) {
@@ -44,5 +45,6 @@ function getLeafLevels(root, level = 0) {
     leafLevels = [...leafLevels, ...getLeafLevels(root.right, level + 1)];
   }
 
+  // this is somewhat wasteful
   return Array.from(new Set(leafLevels));
 }
